@@ -26,7 +26,7 @@ export function AppRoutes(){
                     }
                 }} />
 
-                <Screen name='Profile' component={Profile} options={{
+                <Screen name='Perfil' component={Profile} options={{
                     tabBarIcon: () => {
                         return <Feather name='user' size={23} color='#007bff'/>
                     }
