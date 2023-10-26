@@ -16,19 +16,19 @@ export function AppRoutes(){
                 
                 <Screen name='Home' component={Home} options={{
                     tabBarIcon: () => {
-                        return <Feather name='home' size={23} color='#252525'/>
+                        return <Feather name='home' size={23} color='#007bff'/>
                     }
                 }} />
 
                 <Screen name='Dashboard' component={Dashboard} options={{
                     tabBarIcon: () => {
-                        return <Feather name='airplay' size={23} color='#000'/>
+                        return <Feather name='airplay' size={23} color='#007bff'/>
                     }
                 }} />
 
                 <Screen name='Profile' component={Profile} options={{
                     tabBarIcon: () => {
-                        return <Feather name='user' size={23} color='#000'/>
+                        return <Feather name='user' size={23} color='#007bff'/>
                     }
                 }} />
 
