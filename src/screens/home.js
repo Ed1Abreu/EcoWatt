@@ -1,8 +1,8 @@
-
 // Esses são os imports dos módulos que foram usados nesse aplicativo
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, FlatList, Image } from 'react-native';
 import styles from '../styles/home'
+import Modal from 'react-native-modal';
 
 // Esses são os importas das imagens dos dispositivos
 import lampImage from '../../assets/devices/lamp.webp';
@@ -33,9 +33,10 @@ const predefinedDevices = [
 export function Home() {
   
     const [userDevices, setUserDevices] = useState([]);
-    const [deviceQuantity, setDeviceQuantity] = useState('');
     const [totalPower, setTotalPower] = useState(0);
     const [deviceQuantities, setDeviceQuantities] = useState({});
+    const [isModalVisible, setModalVisible] = useState(false);
+
 
     const addDevice = (device) => {
         if (deviceQuantities[device.name]) {
@@ -54,43 +55,53 @@ export function Home() {
                 setDeviceQuantities({ ...deviceQuantities, [device.name]: '' });
             }
         }
-};
+    };
 
-
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+    
     return (
     <View style={styles.container}>
         <Text style={styles.header}>Gerenciador de Dispositivos Eletrônicos</Text>
         <Text style={styles.sectionTitle}>Dispositivos:</Text>
       
-       {/* Aqui nessa flatList tá a renderização dos dispositivos cadastrados*/}
-        
-       {predefinedDevices.map((device) => (
-            <View style={styles.deviceItem} key={device.name}>
-                
-                <Image source={device.image} style={styles.deviceImage} />
-                <Text style={styles.deviceName}>{device.name}</Text>
-                
-                <TextInput
-                    style={styles.deviceQuantityInput}
-                    placeholder="Insira"
-                    value={deviceQuantities[device.name]}
-                    onChangeText={(text) => {
-                    setDeviceQuantities({ ...deviceQuantities, [device.name]: text });
-                }}
+        <Button
+            title="Adicionar Dispositivo"
+            onPress={() => setModalVisible(true)}
+        />
 
-                keyboardType="numeric"
-                />
-                
-                <Button
-                    title="Adicionar"
-                    onPress={() => addDevice(device)}
-                    style={styles.addButton}
-                />
+        <Modal isVisible={isModalVisible}>
+            <View>
+                {predefinedDevices.map((device) => (
+                <View style={styles.deviceItem} key={device.name}>
+                    
+                    <Image source={device.image} style={styles.deviceImage} />
+                    <Text style={styles.deviceName}>{device.name}</Text>
+                    
+                    <TextInput
+                        style={styles.deviceQuantityInput}
+                        placeholder="Insira"
+                        value={deviceQuantities[device.name]}
+                        onChangeText={(text) => {
+                        setDeviceQuantities({ ...deviceQuantities, [device.name]: text });
+                    }}
+
+                    keyboardType="numeric"
+                    />
+                    
+                    <Button
+                        title="Adicionar"
+                        onPress={() => addDevice(device)}
+                        style={styles.addButton}
+                    />
             
-            </View>
+                </View>
         ))}
+                <Button title='Fechar' onPress={closeModal}></Button>
+            </View>
+        </Modal>
 
-        
         <Text style={styles.sectionTitle}>Seus dispositivos adicionados:</Text>
         {/* Essa aqui renderiza os dispositivos que o usuário adiciona no App */}
         
