@@ -70,4 +70,10 @@ export default StyleSheet.create({
         marginTop: 20,
         color: '#333',
       },
+      totalCost: {
+        fontSize: 20, // Ajuste o tamanho da fonte conforme desejado
+        fontWeight: 'bold', // Pode ser negrito
+        marginTop: 10, // Ajuste a margem conforme desejado
+        color: 'green', // Escolha uma cor apropriada
+      },
 });

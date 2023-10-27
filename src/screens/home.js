@@ -34,10 +34,12 @@ export function Home() {
   
     const [userDevices, setUserDevices] = useState([]);
     const [totalPower, setTotalPower] = useState(0);
+    const [custoMensal, setCustoMensal] = useState(0.0);
     const [deviceQuantities, setDeviceQuantities] = useState({});
     const [isModalVisible, setModalVisible] = useState(false);
 
 
+    
     const addDevice = (device) => {
         if (deviceQuantities[device.name]) {
             
@@ -54,13 +56,14 @@ export function Home() {
                 setTotalPower(totalPower + device.power * quantity);
                 setDeviceQuantities({ ...deviceQuantities, [device.name]: '' });
             }
+            setCustoMensal((totalPower * (0.85 *24)) * 30 );
         }
     };
 
     const closeModal = () => {
         setModalVisible(false);
     };
-    
+
     return (
     <View style={styles.container}>
         <Text style={styles.header}>Gerenciador de Dispositivos Eletrônicos</Text>
@@ -113,6 +116,7 @@ export function Home() {
             )}
         />
         <Text style={styles.totalPower}>Consumo: {(totalPower*24).toFixed(2)} kWh</Text>
+        <Text style={styles.totalCost}>Valor Mensal: R$ {custoMensal.toFixed(2)}</Text>
     </View>
   );
 }
