@@ -27,7 +27,7 @@ const predefinedDevices = [
         image: acImage
     },
     
-    // Só adicionar mais dispositivos aqui seguindo esse padrão em cima
+    // Só adicionar mais dispositivos aqui seguindo esse padrão de cima
 ];
 
 export function Home() {
@@ -35,56 +35,70 @@ export function Home() {
     const [userDevices, setUserDevices] = useState([]);
     const [deviceQuantity, setDeviceQuantity] = useState('');
     const [totalPower, setTotalPower] = useState(0);
+    const [deviceQuantities, setDeviceQuantities] = useState({});
 
     const addDevice = (device) => {
-        if (deviceQuantity) {
-        const quantity = parseInt(deviceQuantity, 10);
-        if (!isNaN(quantity) && quantity > 0) {
-            const userDevice = {
-            name: device.name,
-            power: device.power,
-            quantity,
-            };
-            setUserDevices([...userDevices, userDevice]);
-            setTotalPower(totalPower + device.power * quantity);
-            setDeviceQuantity('');
+        if (deviceQuantities[device.name]) {
+            
+            const quantity = parseInt(deviceQuantities[device.name], 10);
+            
+            if (!isNaN(quantity) && quantity > 0) {
+                const userDevice = {
+                    name: device.name,
+                    power: device.power,
+                    quantity,
+                };
+
+                setUserDevices([...userDevices, userDevice]);
+                setTotalPower(totalPower + device.power * quantity);
+                setDeviceQuantities({ ...deviceQuantities, [device.name]: '' });
+            }
         }
-        }
-    };
+};
+
 
     return (
     <View style={styles.container}>
         <Text style={styles.header}>Gerenciador de Dispositivos Eletrônicos</Text>
         <Text style={styles.sectionTitle}>Dispositivos:</Text>
       
-        <FlatList
-            data={predefinedDevices}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => (
-                <View style={styles.deviceItem}>
-                    <Image source={item.image} style={styles.deviceImage} />
-                    <Text style={styles.deviceName}>{item.name}</Text>
-                    <TextInput
-                        style={styles.deviceQuantityInput}
-                        placeholder="Quantidade"
-                        value={deviceQuantity}
-                        onChangeText={(text) => setDeviceQuantity(text)}
-                        keyboardType="numeric"
-                    />
-                    <Button
-                        title="Adicionar"
-                        onPress={() => addDevice(item)}
-                        style={styles.addButton}
-                    />
-                </View>
-            )}
-        />
+       {/* Aqui nessa flatList tá a renderização dos dispositivos cadastrados*/}
+        
+       {predefinedDevices.map((device) => (
+            <View style={styles.deviceItem} key={device.name}>
+                
+                <Image source={device.image} style={styles.deviceImage} />
+                <Text style={styles.deviceName}>{device.name}</Text>
+                
+                <TextInput
+                    style={styles.deviceQuantityInput}
+                    placeholder="Insira"
+                    value={deviceQuantities[device.name]}
+                    onChangeText={(text) => {
+                    setDeviceQuantities({ ...deviceQuantities, [device.name]: text });
+                }}
+
+                keyboardType="numeric"
+                />
+                
+                <Button
+                    title="Adicionar"
+                    onPress={() => addDevice(device)}
+                    style={styles.addButton}
+                />
+            
+            </View>
+        ))}
+
+        
         <Text style={styles.sectionTitle}>Seus dispositivos adicionados:</Text>
+        {/* Essa aqui renderiza os dispositivos que o usuário adiciona no App */}
+        
         <FlatList
             data={userDevices}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
-            <Text style={styles.userDevice}>{item.quantity} x {item.name} - {item.quantity * item.power} kW</Text>
+            <Text style={styles.userDevice}>{item.quantity} x {item.name} - {(item.quantity * item.power).toFixed(2)} kW</Text>
             )}
         />
         <Text style={styles.totalPower}>Média de Quilowatt gasto em 1 dia: {totalPower.toFixed(2)} kW</Text>

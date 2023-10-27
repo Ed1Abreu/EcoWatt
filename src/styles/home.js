@@ -46,8 +46,13 @@ export default StyleSheet.create({
       },
       deviceQuantityInput: {
         width: 80,
-        fontSize: 14,
+        fontSize: 16,
         color: '#333',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        padding: 5,
+        marginLeft: 10,
       },
       addButton: {
         marginLeft: 10,
