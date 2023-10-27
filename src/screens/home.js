@@ -112,7 +112,7 @@ export function Home() {
             <Text style={styles.userDevice}>{item.quantity} x {item.name} - {(item.quantity * item.power).toFixed(2)} kW</Text>
             )}
         />
-        <Text style={styles.totalPower}>Média de Quilowatt gasto em 1 dia: {totalPower.toFixed(2)} kW</Text>
+        <Text style={styles.totalPower}>Consumo: {(totalPower*24).toFixed(2)} kWh</Text>
     </View>
   );
 }
