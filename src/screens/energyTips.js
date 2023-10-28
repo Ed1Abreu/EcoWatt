@@ -1,10 +1,6 @@
-import styles from '../styles/EnergyTips'
-
-
-
-
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import styles from '../styles/EnergyTips'
 
 export function EnergyTips(){
   const energySavingTips = [
@@ -23,22 +19,26 @@ export function EnergyTips(){
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dicas de Economia de Energia</Text>
+    <Text style={styles.title}>Dicas de Economia de Energia</Text>
 
-      <ScrollView style={styles.tipsContainer}>
+    <ScrollView style={styles.tipsContainer}>
         {energySavingTips.map((tip, index) => (
-          <Text key={index} style={styles.tip}>{`${index + 1}. ${tip}`}</Text>
+            <View key={index}>
+                <Text style={styles.tip}>{`${index + 1}. ${tip}`}</Text>
+                {index !== energySavingTips.length - 1 && <View style={styles.divider} />}
+            </View>
         ))}
-      </ScrollView>
+    </ScrollView>
 
-      <Text style={styles.linksTitle}>Sites Úteis:</Text>
-      <View style={styles.linksContainer}>
+    <Text style={styles.linksTitle}>Sites Úteis:</Text>
+    
+    <View style={styles.linksContainer}>
         {usefulLinks.map((link, index) => (
-          <TouchableOpacity key={index} onPress={() => alert(`Link para: ${link.url}`)}>
-            <Text style={styles.link}>{link.title}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity key={index} onPress={() => alert(`Link para: ${link.url}`)}>
+                <Text style={styles.link}>{link.title}</Text>
+            </TouchableOpacity>
         ))}
-      </View>
     </View>
+  </View>
   );
 };
