@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {Home} from '../screens/home'
-import {Dashboard} from '../screens/dashboard'
-import {Profile} from '../screens/profile'
-import {Feather} from '@expo/vector-icons'
+import { Home } from '../screens/home';
+import { Profile } from '../screens/profile';
+import { EnergyTips } from '../screens/energyTips';
+import { Feather } from '@expo/vector-icons';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -20,9 +20,9 @@ export function AppRoutes(){
                     }
                 }} />
 
-                <Screen name='Dashboard' component={Dashboard} options={{
+                <Screen name='Tips' component={EnergyTips} options={{
                     tabBarIcon: () => {
-                        return <Feather name='airplay' size={23} color='#007bff'/>
+                        return <Feather name='radio' size={23} color='#007bff'/>
                     }
                 }} />
 

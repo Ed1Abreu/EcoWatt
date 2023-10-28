@@ -60,9 +60,23 @@ export default StyleSheet.create({
         color: 'white',
       },
       userDevice: {
-        fontSize: 16,
-        marginBottom: 5,
+        fontSize: 18,
+        marginBottom: 10,
         color: '#333',
+        backgroundColor: '#f1f1f1', // Cor de fundo
+        borderRadius: 10, // Borda arredondada
+        padding: 15, // Espaçamento interno
+        flexDirection: 'row', // Alinhe o conteúdo horizontalmente
+        justifyContent: 'space-between', // Espaço uniforme entre elementos
+        alignItems: 'center', // Centralize verticalmente
+        shadowColor: 'rgba(0, 0, 0, 0.1)', // Cor da sombra
+        shadowOffset: {
+          width: 0,
+          height: 2, // Sutil deslocamento de sombra
+        },
+        shadowOpacity: 0.8, // Opacidade da sombra
+        shadowRadius: 4, // Raio da sombra
+        elevation: 2, // Sombreamento no Android
       },
       totalPower: {
         fontSize: 18,
@@ -76,4 +90,5 @@ export default StyleSheet.create({
         marginTop: 10, // Ajuste a margem conforme desejado
         color: 'green', // Escolha uma cor apropriada
       },
+
 });

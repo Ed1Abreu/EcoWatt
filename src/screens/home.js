@@ -81,7 +81,7 @@ export function Home() {
                     
                     <Image source={device.image} style={styles.deviceImage} />
                     <Text style={styles.deviceName}>{device.name}</Text>
-                    
+
                     <TextInput
                         style={styles.deviceQuantityInput}
                         placeholder="Insira"
@@ -91,7 +91,7 @@ export function Home() {
                     }}
 
                     keyboardType="numeric"
-                    />
+                    /> 
                     
                     <Button
                         title="Adicionar"
