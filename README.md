@@ -28,4 +28,4 @@ Para executar o aplicativo localmente, siga estas etapas:
 Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request para melhorias, correções ou novas funcionalidades.
 
 ## Licença
-Este projeto está sob a Licença [Nome da Licença]. Para mais informações, consulte o arquivo [LICENSE.md].
+Este projeto está sob a Licença MIT - License. Para mais informações, consulte o arquivo [LICENSE.md](https://github.com/Ed1Abreu/EcoWatt/blob/master/LICENSE).
