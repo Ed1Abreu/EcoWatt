@@ -7,28 +7,37 @@ export default StyleSheet.create({
         backgroundColor: '#f7f7f7',
       },
       title: {
-        fontSize: 24,
+        fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
+        textAlign: 'center',
+        color: '#333',
       },
       tipsContainer: {
         marginBottom: 20,
       },
       tip: {
-        fontSize: 16,
+        fontSize: 18,
         marginBottom: 10,
+        color: '#333',
+      },
+      divider: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+        marginVertical: 10,
       },
       linksTitle: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: '#333',
       },
       linksContainer: {
         marginBottom: 20,
       },
       link: {
         fontSize: 16,
-        color: 'blue',
-        marginBottom: 5,
+        color: '#0070c9',
+        marginBottom: 10,
       },
 });
